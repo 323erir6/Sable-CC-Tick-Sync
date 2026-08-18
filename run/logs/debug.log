@@ -1,0 +1,194 @@
+[14????.2026 19:42:34.399] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.42, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.235, --fml.neoFormVersion, 20240808.144430, --nogui]
+[14????.2026 19:42:34.405] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.11+10-LTS
+[14????.2026 19:42:34.407] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.11 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[14????.2026 19:42:34.838] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
+[14????.2026 19:42:35.032] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/C:/Users/ivan/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
+[14????.2026 19:42:36.776] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 9 dependencies adding them to mods collection
+[14????.2026 19:42:36.780] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		CC: Tweaked 1.120.0 (computercraft)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.235 (neoforge)
+		Sable 2.0.3 (sable)
+		Sable CC Tick Sync 1.0.0 (sable_cc_tick_sync)
+		Sable Companion 1.6.0 (sablecompanion)
+		Veil 4.1.4 (veil)
+[14????.2026 19:42:38.950] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[14????.2026 19:42:39.036] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, ., --nogui]
+[14????.2026 19:42:39.531] [main/INFO] [dev.ryanhcode.sable.mixin.AbstractSableMixinPlugin/]: Using Vanilla renderer mixins
+[14????.2026 19:42:39.537] [main/INFO] [dev.ryanhcode.sable.mixin.AbstractSableMixinPlugin/]: Using Vanilla renderer mixins
+[14????.2026 19:42:40.546] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:40.547] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:42.309] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:42.310] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:42.938] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:42.938] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:43.104] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:43.115] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:43.121] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:43.122] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:43.152] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:43.153] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:43.156] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:43.156] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:43.178] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:43.179] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:43.180] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:43.181] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:45.556] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[14????.2026 19:42:47.514] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:47.515] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:47.532] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:47.533] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:47.553] [main/ERROR] [net.neoforged.fml.common.asm.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER
+[14????.2026 19:42:47.554] [main/WARN] [mixin/]: Error loading class: net/minecraft/client/multiplayer/ClientLevel (java.lang.RuntimeException: Attempted to load class net/minecraft/client/multiplayer/ClientLevel for invalid dist DEDICATED_SERVER)
+[14????.2026 19:42:59.399] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[14????.2026 19:42:59.404] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[14????.2026 19:42:59.412] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[14????.2026 19:42:59.416] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[14????.2026 19:42:59.418] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[14????.2026 19:42:59.534] [modloading-worker-0/INFO] [Veil/]: Veil is initializing.
+[14????.2026 19:42:59.615] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.235, for MC 1.21.1
+[14????.2026 19:42:59.766] [modloading-worker-0/INFO] [dev.ryanhcode.sable.Sable/]: Sable loaded!
+[14????.2026 19:43:02.031] [main/ERROR] [net.minecraft.server.dedicated.Settings/]: Failed to load properties from file: server.properties
+java.nio.file.NoSuchFileException: server.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234) ~[?:?]
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380) ~[?:?]
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420) ~[?:?]
+	at java.base/java.nio.file.Files.newInputStream(Files.java:160) ~[?:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.dedicated.Settings.loadFromFile(Settings.java:38) ~[neoforge-21.1.235.jar%23125!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.dedicated.DedicatedServerProperties.fromFile(DedicatedServerProperties.java:132) ~[neoforge-21.1.235.jar%23125!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.dedicated.DedicatedServerSettings.<init>(DedicatedServerSettings.java:12) ~[neoforge-21.1.235.jar%23125!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.Main.main(Main.java:125) ~[neoforge-21.1.235.jar%23125!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.42.jar%23102!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.serverService(CommonLaunchHandler.java:128) ~[loader-4.0.42.jar%23102!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.NeoForgeServerDevLaunchHandler.runService(NeoForgeServerDevLaunchHandler.java:23) ~[loader-4.0.42.jar%23102!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.42.jar%23102!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.5.jar%2382!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.5.jar%2382!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.5.jar%2382!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.5.jar%2382!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.5.jar%2382!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.5.jar%2382!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.5.jar%2382!/:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at net.neoforged.devlaunch.Main.main(Main.java:55) [DevLaunch-1.0.1.jar:?]
+[14????.2026 19:43:02.103] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[14????.2026 19:43:02.399] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/ivan/Desktop/ProgFile/SableCCTickSync/build/moddev/artifacts/neoforge-21.1.235.jar%23125!/assets/.mcassetsroot' uses unexpected schema
+[14????.2026 19:43:02.400] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/ivan/Desktop/ProgFile/SableCCTickSync/build/moddev/artifacts/neoforge-21.1.235.jar%23125!/data/.mcassetsroot' uses unexpected schema
+[14????.2026 19:43:03.948] [NeoForge Version Check/INFO] [net.neoforged.fml.VersionChecker/]: [computercraft] Starting version check at https://api.modrinth.com/updates/cc-tweaked/forge_updates.json
+[14????.2026 19:43:06.594] [NeoForge Version Check/INFO] [net.neoforged.fml.VersionChecker/]: [computercraft] Found status: BETA Current: 1.120.0 Target: null
+[14????.2026 19:43:06.735] [main/INFO] [net.minecraft.server.Main/]: No existing world data, creating new world
+[14????.2026 19:43:17.026] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1365 recipes
+[14????.2026 19:43:19.121] [main/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1469 advancements
+[14????.2026 19:43:24.817] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 1.21.1
+[14????.2026 19:43:24.817] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
+[14????.2026 19:43:24.819] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: SURVIVAL
+[14????.2026 19:43:24.820] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[14????.2026 19:43:25.047] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
+[14????.2026 19:43:25.238] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Adding UDP server channel future
+[14????.2026 19:43:25.390] [Netty Server IO #0/INFO] [dev.ryanhcode.sable.Sable/]: Server UDP channel active
+[14????.2026 19:43:25.392] [Server thread/INFO] [net.minecraft.server.network.ServerConnectionListener/]: Using default channel type
+[14????.2026 19:43:25.411] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[14????.2026 19:43:25.411] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: The server will make no attempt to authenticate usernames. Beware.
+[14????.2026 19:43:25.411] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[14????.2026 19:43:25.411] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: To change this, set "online-mode" to "true" in the server.properties file.
+[14????.2026 19:43:25.635] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
+[14????.2026 19:43:25.760] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Creating physics pipeline for ResourceKey[minecraft:dimension / minecraft:overworld] using RapierPhysicsPipelineProvider
+[14????.2026 19:43:26.116] [Server thread/ERROR] [dev.ryanhcode.sable.Sable/]: Failed to apply tag physics properties. Unknown block: create:flywheel
+[14????.2026 19:43:32.726] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Creating physics pipeline for ResourceKey[minecraft:dimension / minecraft:the_nether] using RapierPhysicsPipelineProvider
+[14????.2026 19:43:32.726] [Server thread/ERROR] [dev.ryanhcode.sable.Sable/]: Failed to apply tag physics properties. Unknown block: create:flywheel
+[14????.2026 19:43:32.739] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Creating physics pipeline for ResourceKey[minecraft:dimension / minecraft:the_end] using RapierPhysicsPipelineProvider
+[14????.2026 19:43:32.740] [Server thread/ERROR] [dev.ryanhcode.sable.Sable/]: Failed to apply tag physics properties. Unknown block: create:flywheel
+[14????.2026 19:43:32.784] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[14????.2026 19:43:32.820] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[14????.2026 19:43:33.875] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[14????.2026 19:43:33.876] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[14????.2026 19:43:34.356] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[14????.2026 19:43:34.875] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[14????.2026 19:43:35.289] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[14????.2026 19:43:35.789] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[14????.2026 19:43:36.532] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
+[14????.2026 19:43:36.803] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
+[14????.2026 19:43:37.295] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
+[14????.2026 19:43:37.785] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
+[14????.2026 19:43:38.338] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 20%
+[14????.2026 19:43:38.855] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[14????.2026 19:43:39.348] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[14????.2026 19:43:39.803] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[14????.2026 19:43:40.331] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[14????.2026 19:43:40.827] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[14????.2026 19:43:41.424] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[14????.2026 19:43:41.789] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[14????.2026 19:43:42.181] [Server thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 9397 ms
+[14????.2026 19:43:42.181] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (16.703s)! For help, type "help"
+[14????.2026 19:43:42.241] [Server thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
+[14????.2026 19:43:42.276] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[14????.2026 19:48:42.726] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 19:48:44.487] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 19:48:44.495] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 19:48:44.770] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 2085ms or 41 ticks behind
+[14????.2026 19:53:44.688] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 19:53:44.702] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 19:53:44.703] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 19:58:44.692] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 19:58:44.724] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 19:58:44.732] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:03:44.730] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:03:44.825] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:03:44.827] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:08:44.706] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:08:44.862] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:08:44.862] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:10:17.979] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 7978ms or 159 ticks behind
+[14????.2026 20:13:52.648] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:13:52.767] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:13:52.769] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:18:52.662] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:18:52.802] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:18:52.803] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:23:52.646] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:23:52.748] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:23:52.758] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:28:52.666] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:28:52.780] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:28:52.781] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:33:52.652] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:33:52.763] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:33:52.763] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:38:52.653] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:38:52.764] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:38:52.768] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:43:52.637] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:43:52.650] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:43:52.652] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:45:28.257] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 2520ms or 50 ticks behind
+[14????.2026 20:48:55.146] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:48:55.225] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:48:55.225] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:53:55.153] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:53:55.297] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:53:55.299] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:58:55.141] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 20:58:55.179] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 20:58:55.179] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end
+[14????.2026 20:59:35.516] [Server thread/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: OneOne11 (/[fe80::7dac:a18d:d1c9:e4fc]:48308) lost connection: Disconnected
+[14????.2026 20:59:44.301] [Server thread/INFO] [net.minecraft.server.network.ServerConfigurationPacketListenerImpl/]: com.mojang.authlib.GameProfile@22834163[id=40674d59-486f-3304-beea-40d7c0347d58,name=OneOne11,properties={}] lost connection: Incompatible client! Please use NeoForge 21.1.235
+[14????.2026 20:59:44.306] [Server thread/WARN] [net.minecraft.network.Connection/]: handleDisconnection() called twice
+[14????.2026 20:59:51.659] [Server thread/INFO] [net.minecraft.server.network.ServerConfigurationPacketListenerImpl/]: com.mojang.authlib.GameProfile@3e1d4c5a[id=40674d59-486f-3304-beea-40d7c0347d58,name=OneOne11,properties={}] lost connection: Incompatible client! Please use NeoForge 21.1.235
+[14????.2026 20:59:51.686] [Server thread/WARN] [net.minecraft.network.Connection/]: handleDisconnection() called twice
+[14????.2026 21:02:17.536] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 2056ms or 41 ticks behind
+[14????.2026 21:03:57.210] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:overworld
+[14????.2026 21:03:57.407] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_nether
+[14????.2026 21:03:57.409] [Server thread/INFO] [dev.ryanhcode.sable.Sable/]: Saving sub-levels for level 'ServerLevel[world]'/minecraft:the_end

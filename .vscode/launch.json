@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Server",
+      "presentation": {
+        "group": "Mod Development - sable-cc-tick-sync",
+        "order": 0
+      },
+      "projectName": "sable-cc-tick-sync",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@C:\\Users\\ivan\\Desktop\\ProgFile\\SableCCTickSync\\build\\moddev\\serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@C:\\Users\\ivan\\Desktop\\ProgFile\\SableCCTickSync\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dsable_cc_tick_sync%%C:\\Users\\ivan\\Desktop\\ProgFile\\SableCCTickSync\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    }
+  ]
+}
