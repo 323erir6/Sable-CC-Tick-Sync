@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths-ignore:
       - 'build/libs/**'
+      - 'build-action.log'
   workflow_dispatch:
 
 permissions:
@@ -27,6 +28,7 @@ jobs:
           java-version: '21'
 
       - name: Download Sable 2.0.5
+        id: sable
         shell: bash
         run: |
           set -euo pipefail
@@ -55,7 +57,7 @@ jobs:
           if primary is None:
               raise SystemExit('Sable 2.0.5 has no downloadable files')
 
-          print(primary['url'])
+          print('Downloading:', primary['url'])
           urllib.request.urlretrieve(primary['url'], '../_deps_sable_2_0_5/sable-neoforge-1.21.1-2.0.5.jar')
           PY
 
@@ -68,11 +70,19 @@ jobs:
           test -f META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar
 
       - name: Build mod
+        id: gradle_build
         shell: bash
         run: |
-          set -euo pipefail
+          set -o pipefail
           chmod +x gradlew
-          ./gradlew --no-daemon clean build
+          {
+            echo "=== Java ==="
+            java -version
+            echo "=== Gradle ==="
+            ./gradlew --version
+            echo "=== Build ==="
+            ./gradlew --no-daemon clean build
+          } 2>&1 | tee build-action.log
 
       - name: Verify built JAR
         shell: bash
@@ -81,9 +91,10 @@ jobs:
           test -f build/libs/sable-cc-tick-sync-1.0.1.jar
           jar tf build/libs/sable-cc-tick-sync-1.0.1.jar | grep -q 'ua/ivan/sableccticksync/SableCcTickSync.class'
           jar tf build/libs/sable-cc-tick-sync-1.0.1.jar | grep -q 'META-INF/neoforge.mods.toml'
-          echo 'JAR verification passed.'
+          echo 'JAR verification passed.' | tee -a build-action.log
 
       - name: Commit built JAR
+        if: success()
         shell: bash
         run: |
           set -euo pipefail
@@ -92,7 +103,26 @@ jobs:
           git add -f build/libs/sable-cc-tick-sync-1.0.1.jar
           if git diff --cached --quiet; then
             echo 'Built JAR is already up to date.'
-            exit 0
+          else
+            git commit -m 'Build Sable CC Tick Sync 1.0.1 for Sable 2.0.5'
+            git push
           fi
-          git commit -m 'Build Sable CC Tick Sync 1.0.1 for Sable 2.0.5'
+
+      - name: Commit build log
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          if [ ! -f build-action.log ]; then
+            {
+              echo 'Build did not reach the Gradle step.'
+              echo "sable-step=${{ steps.sable.outcome }}"
+              echo "gradle-step=${{ steps.gradle_build.outcome }}"
+            } > build-action.log
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git pull --rebase origin main
+          git add -f build-action.log
+          git commit -m 'Record Sable CC Tick Sync build result' || exit 0
           git push
