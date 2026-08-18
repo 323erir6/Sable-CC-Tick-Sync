@@ -1,0 +1,98 @@
+name: Build and commit JAR
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'build/libs/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Download Sable 2.0.5
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ../_deps_sable_2_0_5 ../_deps_sable
+
+          python3 - <<'PY'
+          import json
+          import urllib.parse
+          import urllib.request
+
+          params = urllib.parse.urlencode({
+              'game_versions': json.dumps(['1.21.1']),
+              'loaders': json.dumps(['neoforge']),
+          })
+          url = 'https://api.modrinth.com/v2/project/sable/version?' + params
+          req = urllib.request.Request(url, headers={'User-Agent': 'Sable-CC-Tick-Sync-GitHub-Actions/1.0'})
+          with urllib.request.urlopen(req) as response:
+              versions = json.load(response)
+
+          version = next((v for v in versions if v.get('version_number') == '2.0.5'), None)
+          if version is None:
+              raise SystemExit('Sable 2.0.5 was not found on Modrinth')
+
+          files = version.get('files') or []
+          primary = next((f for f in files if f.get('primary')), files[0] if files else None)
+          if primary is None:
+              raise SystemExit('Sable 2.0.5 has no downloadable files')
+
+          print(primary['url'])
+          urllib.request.urlretrieve(primary['url'], '../_deps_sable_2_0_5/sable-neoforge-1.21.1-2.0.5.jar')
+          PY
+
+      - name: Extract Sable Companion dependency
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd ../_deps_sable
+          jar xf ../_deps_sable_2_0_5/sable-neoforge-1.21.1-2.0.5.jar META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar
+          test -f META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar
+
+      - name: Build mod
+        shell: bash
+        run: |
+          set -euo pipefail
+          chmod +x gradlew
+          ./gradlew --no-daemon clean build
+
+      - name: Verify built JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f build/libs/sable-cc-tick-sync-1.0.1.jar
+          jar tf build/libs/sable-cc-tick-sync-1.0.1.jar | grep -q 'ua/ivan/sableccticksync/SableCcTickSync.class'
+          jar tf build/libs/sable-cc-tick-sync-1.0.1.jar | grep -q 'META-INF/neoforge.mods.toml'
+          echo 'JAR verification passed.'
+
+      - name: Commit built JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f build/libs/sable-cc-tick-sync-1.0.1.jar
+          if git diff --cached --quiet; then
+            echo 'Built JAR is already up to date.'
+            exit 0
+          fi
+          git commit -m 'Build Sable CC Tick Sync 1.0.1 for Sable 2.0.5'
+          git push
