@@ -34,18 +34,26 @@ neoForge {
     }
 }
 
+val sableVersion = property("sable_version") as String
+val sableVersionDir = sableVersion.replace('.', '_')
+
 dependencies {
-    compileOnly(files("../_deps_sable_2_0_3/sable-neoforge-1.21.1-2.0.3.jar"))
+    compileOnly(files("../_deps_sable_${sableVersionDir}/sable-neoforge-1.21.1-${sableVersion}.jar"))
     compileOnly(files("../_deps_sable/META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar"))
     compileOnly(files("libs/cc-tweaked-1.21.1-forge-1.120.0.jar"))
 
-    runtimeOnly(files("../_deps_sable_2_0_3/sable-neoforge-1.21.1-2.0.3.jar"))
+    runtimeOnly(files("../_deps_sable_${sableVersionDir}/sable-neoforge-1.21.1-${sableVersion}.jar"))
     runtimeOnly(files("libs/cc-tweaked-1.21.1-forge-1.120.0.jar"))
 }
 
 tasks.processResources {
     inputs.property("version", project.version)
+    inputs.property("sable_version", sableVersion)
+
     filesMatching("META-INF/neoforge.mods.toml") {
-        expand("version" to project.version)
+        expand(
+            "version" to project.version,
+            "sable_version" to sableVersion
+        )
     }
 }

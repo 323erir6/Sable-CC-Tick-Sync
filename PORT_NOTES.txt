@@ -1,0 +1,21 @@
+Sable CC Tick Sync - Sable 2.0.5 port
+
+Replace these files in the original project:
+- build.gradle.kts
+- gradle.properties
+- src/main/resources/META-INF/neoforge.mods.toml
+
+Required local dependencies:
+1. Put the Sable 2.0.5 NeoForge jar at:
+   ../_deps_sable_2_0_5/sable-neoforge-1.21.1-2.0.5.jar
+
+2. The project still uses Sable Companion 1.6.0, because Sable 2.0.5 uses
+   the same companion version as Sable 2.0.3:
+   ../_deps_sable/META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar
+
+3. Keep the existing CC:Tweaked jar:
+   libs/cc-tweaked-1.21.1-forge-1.120.0.jar
+
+The Java synchronization code does not need an API rewrite for Sable 2.0.5:
+the pre-physics event, SubLevelPhysicsSystem#getLevel(), Sable.HELPER#getContaining(),
+ServerSubLevel and the relevant sublevel APIs used by this mod remain compatible.
