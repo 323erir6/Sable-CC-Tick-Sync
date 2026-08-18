@@ -31,10 +31,10 @@ jobs:
         id: sable
         shell: bash
         run: |
-          set -euo pipefail
+          set -o pipefail
           mkdir -p ../_deps_sable_2_0_5 ../_deps_sable
-
-          python3 - <<'PY'
+          {
+            python3 - <<'PY'
           import json
           import urllib.parse
           import urllib.request
@@ -48,26 +48,43 @@ jobs:
           with urllib.request.urlopen(req) as response:
               versions = json.load(response)
 
-          version = next((v for v in versions if v.get('version_number') == '2.0.5'), None)
+          print('Available Sable NeoForge 1.21.1 versions:')
+          for item in versions:
+              print(' -', item.get('version_number'))
+
+          version = next(
+              (v for v in versions if str(v.get('version_number', '')).startswith('2.0.5')),
+              None,
+          )
           if version is None:
-              raise SystemExit('Sable 2.0.5 was not found on Modrinth')
+              raise SystemExit('Sable 2.0.5 for NeoForge 1.21.1 was not found on Modrinth')
 
           files = version.get('files') or []
           primary = next((f for f in files if f.get('primary')), files[0] if files else None)
           if primary is None:
               raise SystemExit('Sable 2.0.5 has no downloadable files')
 
+          print('Selected version:', version.get('version_number'))
+          print('Selected file:', primary.get('filename'))
           print('Downloading:', primary['url'])
-          urllib.request.urlretrieve(primary['url'], '../_deps_sable_2_0_5/sable-neoforge-1.21.1-2.0.5.jar')
+          urllib.request.urlretrieve(
+              primary['url'],
+              '../_deps_sable_2_0_5/sable-neoforge-1.21.1-2.0.5.jar',
+          )
           PY
+          } 2>&1 | tee build-action.log
 
       - name: Extract Sable Companion dependency
         shell: bash
         run: |
-          set -euo pipefail
-          cd ../_deps_sable
-          jar xf ../_deps_sable_2_0_5/sable-neoforge-1.21.1-2.0.5.jar META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar
-          test -f META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar
+          set -o pipefail
+          {
+            echo '=== Extract Sable Companion ==='
+            jar tf ../_deps_sable_2_0_5/sable-neoforge-1.21.1-2.0.5.jar | grep 'sable-companion-common' || true
+            cd ../_deps_sable
+            jar xf ../_deps_sable_2_0_5/sable-neoforge-1.21.1-2.0.5.jar META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar
+            test -f META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar
+          } 2>&1 | tee -a "$GITHUB_WORKSPACE/build-action.log"
 
       - name: Build mod
         id: gradle_build
@@ -76,13 +93,13 @@ jobs:
           set -o pipefail
           chmod +x gradlew
           {
-            echo "=== Java ==="
+            echo '=== Java ==='
             java -version
-            echo "=== Gradle ==="
+            echo '=== Gradle ==='
             ./gradlew --version
-            echo "=== Build ==="
+            echo '=== Build ==='
             ./gradlew --no-daemon clean build
-          } 2>&1 | tee build-action.log
+          } 2>&1 | tee -a build-action.log
 
       - name: Verify built JAR
         shell: bash
@@ -115,7 +132,7 @@ jobs:
           set +e
           if [ ! -f build-action.log ]; then
             {
-              echo 'Build did not reach the Gradle step.'
+              echo 'Build did not create a build log.'
               echo "sable-step=${{ steps.sable.outcome }}"
               echo "gradle-step=${{ steps.gradle_build.outcome }}"
             } > build-action.log
