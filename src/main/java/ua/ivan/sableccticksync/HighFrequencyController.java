@@ -71,6 +71,7 @@ public final class HighFrequencyController {
     public static synchronized void removeComputer(int computerId) {
         STATES.remove(computerId);
         ON_CONSTRUCTION.remove(computerId);
+        FastPeripheralScheduler.clearComputer(computerId);
     }
 
     private static final class State {
