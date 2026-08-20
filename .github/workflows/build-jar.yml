@@ -2,7 +2,7 @@ name: Build and commit JAR
 
 on:
   push:
-    branches: [main]
+    branches: [main, fast-peripheral-lane]
     paths-ignore:
       - 'build/libs/**'
       - 'build-action.log'
@@ -53,7 +53,7 @@ jobs:
               'loaders': json.dumps(['neoforge']),
           })
           url = 'https://api.modrinth.com/v2/project/sable/version?' + params
-          req = urllib.request.Request(url, headers={'User-Agent': 'Sable-CC-Tick-Sync-GitHub-Actions/1.1'})
+          req = urllib.request.Request(url, headers={'User-Agent': 'Sable-CC-Tick-Sync-GitHub-Actions/1.2'})
           with urllib.request.urlopen(req) as response:
               versions = json.load(response)
 
@@ -118,6 +118,10 @@ jobs:
           jar tf "$MOD_JAR" | grep -q 'ua/ivan/sableccticksync/SableCcTickSync.class'
           jar tf "$MOD_JAR" | grep -q 'ua/ivan/sableccticksync/SableSyncApi.class'
           jar tf "$MOD_JAR" | grep -q 'ua/ivan/sableccticksync/HighFrequencyController.class'
+          jar tf "$MOD_JAR" | grep -q 'ua/ivan/sableccticksync/FastPeripheralCallContext.class'
+          jar tf "$MOD_JAR" | grep -q 'ua/ivan/sableccticksync/FastPeripheralScheduler.class'
+          jar tf "$MOD_JAR" | grep -q 'ua/ivan/sableccticksync/mixin/LuaContextMixin.class'
+          jar tf "$MOD_JAR" | grep -q 'ua/ivan/sableccticksync/mixin/PeripheralWrapperMixin.class'
           jar tf "$MOD_JAR" | grep -q 'META-INF/neoforge.mods.toml'
           echo 'JAR verification passed.' | tee -a build-action.log
 
@@ -150,7 +154,7 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git pull --rebase origin main
+          git pull --rebase origin "$GITHUB_REF_NAME"
           git add -f build-action.log
           git commit -m 'Record Sable CC Tick Sync build result' || exit 0
           git push
