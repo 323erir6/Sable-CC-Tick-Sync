@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import ua.ivan.sableccticksync.FastPeripheralScheduler;
 import ua.ivan.sableccticksync.HighFrequencyController;
 import ua.ivan.sableccticksync.PhysicsComputerTicker;
 import ua.ivan.sableccticksync.ServerComputerBridge;
@@ -26,6 +27,10 @@ public abstract class ServerComputerMixin implements ServerComputerBridge {
         // world/sublevel lookup here rather than on CC's computer thread.
         ServerComputer serverComputer = (ServerComputer) (Object) this;
         PhysicsComputerTicker.refreshConstructionState(serverComputer);
+
+        // Fallback path: if a supported fast-lane peripheral task was queued just
+        // after the final physics substep, do not leave it waiting forever.
+        FastPeripheralScheduler.runPending(serverComputer.getID(), 64);
     }
 
     @Redirect(
