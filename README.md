@@ -3,6 +3,7 @@
 Current mod version: **1.2.0**.
 
 Server-side NeoForge 1.21.1 addon for Sable 2.0.5 and CC:Tweaked 1.120.0.
+Build target: Java 21 / NeoForge 21.1.248.
 
 Computers placed on Sable physical constructions tick once per Sable physics
 substep. Computers in the normal Minecraft world retain the standard CC:Tweaked
