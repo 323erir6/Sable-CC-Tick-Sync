@@ -1,5 +1,7 @@
 # Sable CC Tick Sync
 
+Current mod version: **1.1.0**.
+
 Server-side NeoForge 1.21.1 addon for Sable 2.0.5 and CC:Tweaked 1.120.0.
 
 Computers placed on Sable physical constructions tick once per Sable physics
