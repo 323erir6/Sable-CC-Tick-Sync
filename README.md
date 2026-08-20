@@ -1,6 +1,6 @@
 # Sable CC Tick Sync
 
-Current mod version: **1.2.0**.
+Current mod version: **1.2.1**.
 
 Server-side NeoForge 1.21.1 addon for Sable 2.0.5 and CC:Tweaked 1.120.0.
 Build target: Java 21 / NeoForge 21.1.248.
@@ -56,13 +56,20 @@ physics-substep boundaries instead.
 
 Supported peripheral types:
 
-- `synaxis_dynamic_motor`
-- `compact_flap`
-- `Create_RotationSpeedController`
+- `synaxis_dynamic_motor` — Synaxis Dynamic Motor and Dynamic Joint Motor
+- `compact_flap` — Synaxis Compact Flap
+- `synaxis_jet` — Synaxis Jet
+- `synaxis_camera` — Synaxis Camera
+- `Create_RotationSpeedController` — Create Rotation Speed Controller
 
-This accelerates calls such as Synaxis `setTarget`, Compact Flap
-`setAngle`/`setTilt`, and Create `setTargetSpeed`. Other peripheral types keep
-CC:Tweaked's normal scheduling behaviour.
+NeoPeripheral exposes every Synaxis `AbstractDynamicMotorBlockEntity` through the
+same `synaxis_dynamic_motor` peripheral, so Dynamic Joint Motor is covered by the
+same fast-lane entry as the other dynamic motor variant.
+
+The fast lane accelerates supported `mainThread=true` calls, including Synaxis
+motor `setTarget`, Compact Flap `setAngle`/`setTilt`, Jet thrust/vector controls,
+Camera reads/ray controls, and Create `setTargetSpeed`. Other peripheral types
+keep CC:Tweaked's normal scheduling behaviour.
 
 The fast lane is active only when all of these are true:
 
