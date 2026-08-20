@@ -1,6 +1,5 @@
 package ua.ivan.sableccticksync;
 
-import dan200.computercraft.api.lua.IComputerSystem;
 import dan200.computercraft.shared.computer.core.ServerComputer;
 import dan200.computercraft.shared.computer.core.ServerContext;
 import dev.ryanhcode.sable.Sable;
@@ -17,12 +16,16 @@ public final class PhysicsComputerTicker {
     private PhysicsComputerTicker() {
     }
 
+    /**
+     * This method must only be called from the Minecraft server thread.
+     */
     public static boolean usesPhysicsTicks(ServerComputer computer) {
         return findLiveConstruction(computer.getLevel(), computer.getPosition()) != null;
     }
 
-    public static boolean usesPhysicsTicks(IComputerSystem computer) {
-        return findLiveConstruction(computer.getLevel(), computer.getPosition()) != null;
+    public static void refreshConstructionState(ServerComputer computer) {
+        boolean onConstruction = usesPhysicsTicks(computer);
+        HighFrequencyController.setOnConstruction(computer.getID(), onConstruction);
     }
 
     public static void onPrePhysicsTick(ForgeSablePrePhysicsTickEvent event) {
@@ -41,18 +44,18 @@ public final class PhysicsComputerTicker {
                     computer.getLevel(), computer.getPosition()
             );
             if (construction == null || construction.getLevel() != level) {
-                HighFrequencyController.disable(computer.getID());
+                HighFrequencyController.setOnConstruction(computer.getID(), false);
                 continue;
             }
 
+            HighFrequencyController.setOnConstruction(computer.getID(), true);
             ServerComputerBridge bridge = (ServerComputerBridge) computer;
 
             // Existing behaviour: one CC tick for every Sable physics substep.
             bridge.sableCcTickSync$physicsTick();
 
             // Optional mode: add exactly 100 CC ticks per simulated second on top of
-            // the Sable-synchronised base rate. Fractional accumulation keeps the
-            // average exact even when Sable's substep rate is not a divisor of 100.
+            // the Sable-synchronised base rate.
             int extraTicks = HighFrequencyController.consumeExtraTicks(
                     computer.getID(), event.getTimeStep()
             );
