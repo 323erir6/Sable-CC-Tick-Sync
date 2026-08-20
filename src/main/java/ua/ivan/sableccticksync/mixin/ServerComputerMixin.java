@@ -7,7 +7,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import ua.ivan.sableccticksync.HighFrequencyController;
 import ua.ivan.sableccticksync.PhysicsComputerTicker;
 import ua.ivan.sableccticksync.ServerComputerBridge;
 
@@ -16,6 +19,14 @@ public abstract class ServerComputerMixin implements ServerComputerBridge {
     @Shadow
     @Final
     private Computer computer;
+
+    @Inject(method = "tickServer", at = @At("HEAD"), remap = false)
+    private void sableCcTickSync$refreshConstructionState(CallbackInfo ci) {
+        // tickServer runs on Minecraft's server thread. Keep all access to Sable's
+        // world/sublevel lookup here rather than on CC's computer thread.
+        ServerComputer serverComputer = (ServerComputer) (Object) this;
+        PhysicsComputerTicker.refreshConstructionState(serverComputer);
+    }
 
     @Redirect(
         method = "tickServer",
@@ -28,7 +39,7 @@ public abstract class ServerComputerMixin implements ServerComputerBridge {
     )
     private void sableCcTickSync$redirectNormalComputerTick(Computer computer) {
         ServerComputer serverComputer = (ServerComputer) (Object) this;
-        if (!PhysicsComputerTicker.usesPhysicsTicks(serverComputer)) {
+        if (!HighFrequencyController.isOnConstruction(serverComputer.getID())) {
             computer.tick();
         }
     }
