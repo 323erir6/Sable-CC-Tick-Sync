@@ -27,6 +27,15 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Resolve mod version
+        shell: bash
+        run: |
+          set -euo pipefail
+          MOD_VERSION="$(sed -n 's/^mod_version=//p' gradle.properties | tr -d '\r')"
+          test -n "$MOD_VERSION"
+          echo "MOD_VERSION=$MOD_VERSION" >> "$GITHUB_ENV"
+          echo "MOD_JAR=build/libs/sable-cc-tick-sync-$MOD_VERSION.jar" >> "$GITHUB_ENV"
+
       - name: Download Sable 2.0.5
         id: sable
         shell: bash
@@ -44,7 +53,7 @@ jobs:
               'loaders': json.dumps(['neoforge']),
           })
           url = 'https://api.modrinth.com/v2/project/sable/version?' + params
-          req = urllib.request.Request(url, headers={'User-Agent': 'Sable-CC-Tick-Sync-GitHub-Actions/1.0'})
+          req = urllib.request.Request(url, headers={'User-Agent': 'Sable-CC-Tick-Sync-GitHub-Actions/1.1'})
           with urllib.request.urlopen(req) as response:
               versions = json.load(response)
 
@@ -105,9 +114,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -f build/libs/sable-cc-tick-sync-1.0.1.jar
-          jar tf build/libs/sable-cc-tick-sync-1.0.1.jar | grep -q 'ua/ivan/sableccticksync/SableCcTickSync.class'
-          jar tf build/libs/sable-cc-tick-sync-1.0.1.jar | grep -q 'META-INF/neoforge.mods.toml'
+          test -f "$MOD_JAR"
+          jar tf "$MOD_JAR" | grep -q 'ua/ivan/sableccticksync/SableCcTickSync.class'
+          jar tf "$MOD_JAR" | grep -q 'ua/ivan/sableccticksync/SableSyncApi.class'
+          jar tf "$MOD_JAR" | grep -q 'ua/ivan/sableccticksync/HighFrequencyController.class'
+          jar tf "$MOD_JAR" | grep -q 'META-INF/neoforge.mods.toml'
           echo 'JAR verification passed.' | tee -a build-action.log
 
       - name: Commit built JAR
@@ -117,11 +128,11 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f build/libs/sable-cc-tick-sync-1.0.1.jar
+          git add -f "$MOD_JAR"
           if git diff --cached --quiet; then
             echo 'Built JAR is already up to date.'
           else
-            git commit -m 'Build Sable CC Tick Sync 1.0.1 for Sable 2.0.5'
+            git commit -m "Build Sable CC Tick Sync $MOD_VERSION for Sable 2.0.5"
             git push
           fi
 
