@@ -13,6 +13,8 @@ import net.minecraft.server.level.ServerLevel;
 import java.util.List;
 
 public final class PhysicsComputerTicker {
+    private static final int MAX_FAST_PERIPHERAL_TASKS_PER_PASS = 64;
+
     private PhysicsComputerTicker() {
     }
 
@@ -48,20 +50,38 @@ public final class PhysicsComputerTicker {
                 continue;
             }
 
-            HighFrequencyController.setOnConstruction(computer.getID(), true);
+            int computerId = computer.getID();
+            HighFrequencyController.setOnConstruction(computerId, true);
             ServerComputerBridge bridge = (ServerComputerBridge) computer;
+
+            // Execute supported main-thread peripheral work immediately at the
+            // physics boundary instead of waiting for CC:Tweaked's normal
+            // Minecraft-tick MainThread scheduler.
+            FastPeripheralScheduler.runPending(
+                    computerId,
+                    MAX_FAST_PERIPHERAL_TASKS_PER_PASS
+            );
 
             // Existing behaviour: one CC tick for every Sable physics substep.
             bridge.sableCcTickSync$physicsTick();
 
-            // Optional mode: add exactly 100 CC ticks per simulated second on top of
-            // the Sable-synchronised base rate.
+            // Optional mode: add exactly 100 CC logical ticks per simulated
+            // second on top of the Sable-synchronised base rate.
             int extraTicks = HighFrequencyController.consumeExtraTicks(
-                    computer.getID(), event.getTimeStep()
+                    computerId, event.getTimeStep()
             );
             for (int i = 0; i < extraTicks; i++) {
                 bridge.sableCcTickSync$physicsTick();
             }
+
+            // The computer thread runs independently. A supported peripheral
+            // call may have been queued while the logical ticks above were being
+            // processed, so make a second opportunistic pass before Sable
+            // advances to the next physics substep.
+            FastPeripheralScheduler.runPending(
+                    computerId,
+                    MAX_FAST_PERIPHERAL_TASKS_PER_PASS
+            );
         }
     }
 
