@@ -4,8 +4,12 @@ import java.util.Set;
 
 public final class FastPeripheralCallContext {
     private static final Set<String> SUPPORTED_TYPES = Set.of(
+            // Synaxis Dynamic Motor peripheral is attached to every
+            // AbstractDynamicMotorBlockEntity, including Dynamic Joint Motor.
             "synaxis_dynamic_motor",
             "compact_flap",
+            "synaxis_jet",
+            "synaxis_camera",
             "Create_RotationSpeedController"
     );
 
