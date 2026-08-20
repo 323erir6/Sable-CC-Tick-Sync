@@ -7,7 +7,7 @@ modId="sable_cc_tick_sync"
 version="${version}"
 displayName="Sable CC Tick Sync"
 authors="Ivan"
-description='''Synchronizes CC:Tweaked computers on Sable constructions with Sable physics substeps.'''
+description='''Synchronizes CC:Tweaked computers on Sable constructions with Sable physics substeps and provides an optional +100 Hz mode.'''
 
 [[mixins]]
 config="sable_cc_tick_sync.mixins.json"
@@ -15,7 +15,7 @@ config="sable_cc_tick_sync.mixins.json"
 [[dependencies.sable_cc_tick_sync]]
 modId="neoforge"
 type="required"
-versionRange="[21.1.235,22)"
+versionRange="[21.1.248,22)"
 ordering="NONE"
 side="SERVER"
 
