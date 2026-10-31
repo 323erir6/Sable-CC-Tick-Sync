@@ -1,0 +1,13 @@
+#CC:Tweaked computer clock settings.
+#Restart the game/server after changing these values.
+[computerClock]
+	#Use unmodified CC:Tweaked execution and peripheral scheduling.
+	#When true, computerFrequencyHz is ignored.
+	vanillaSpeed = false
+	#Target Lua bytecode clock per computer, in instructions per second.
+	#20,000 equals 20 kHz. This value can be edited in Create's config screen.
+	#This is a CPU instruction clock, not a request
+	#to run the Minecraft server or redstone one million times per second.
+	# Default: 20000
+	# Range: 1000 ~ 100000000
+	computerFrequencyHz = 20000

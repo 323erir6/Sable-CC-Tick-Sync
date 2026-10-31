@@ -6,8 +6,8 @@ license="MIT"
 modId="sable_cc_tick_sync"
 version="${version}"
 displayName="Sable CC Tick Sync"
-authors="Ivan"
-description='''Synchronizes CC:Tweaked computers on Sable constructions with Sable physics substeps.'''
+authors="Sable CC Integration"
+description='''Accelerates CC:Tweaked computers at Sable physics steps, safely schedules NeoPeripheral engine access, and preserves Minecraft-tick-bound peripherals.'''
 
 [[mixins]]
 config="sable_cc_tick_sync.mixins.json"

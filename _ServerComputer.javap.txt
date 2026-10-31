@@ -1,0 +1,611 @@
+﻿Compiled from "ServerComputer.java"
+public class dan200.computercraft.shared.computer.core.ServerComputer implements dan200.computercraft.core.computer.ComputerEnvironment {
+  public static final dan200.computercraft.api.component.ComputerComponent<dan200.computercraft.core.metrics.MetricsObserver> METRICS;
+
+  private final java.util.UUID instanceUUID;
+
+  private net.minecraft.server.level.ServerLevel level;
+
+  private net.minecraft.core.BlockPos position;
+
+  private final dan200.computercraft.shared.computer.core.ComputerFamily family;
+
+  private final dan200.computercraft.core.metrics.MetricsObserver metrics;
+
+  private final dan200.computercraft.core.computer.Computer computer;
+
+  private final dan200.computercraft.shared.computer.terminal.NetworkedTerminal terminal;
+
+  private final java.util.concurrent.atomic.AtomicBoolean terminalChanged;
+
+  private final long storageCapacity;
+
+  private int ticksSincePing;
+
+  public dan200.computercraft.shared.computer.core.ServerComputer(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, dan200.computercraft.shared.computer.core.ServerComputer$Properties);
+    Code:
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: invokestatic  #7                  // Method java/util/UUID.randomUUID:()Ljava/util/UUID;
+         8: putfield      #13                 // Field instanceUUID:Ljava/util/UUID;
+        11: aload_0
+        12: new           #19                 // class java/util/concurrent/atomic/AtomicBoolean
+        15: dup
+        16: iconst_0
+        17: invokespecial #21                 // Method java/util/concurrent/atomic/AtomicBoolean."<init>":(Z)V
+        20: putfield      #24                 // Field terminalChanged:Ljava/util/concurrent/atomic/AtomicBoolean;
+        23: aload_0
+        24: aload_1
+        25: putfield      #28                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        28: aload_0
+        29: aload_2
+        30: putfield      #32                 // Field position:Lnet/minecraft/core/BlockPos;
+        33: aload_0
+        34: aload_3
+        35: getfield      #36                 // Field dan200/computercraft/shared/computer/core/ServerComputer$Properties.family:Ldan200/computercraft/shared/computer/core/ComputerFamily;
+        38: putfield      #42                 // Field family:Ldan200/computercraft/shared/computer/core/ComputerFamily;
+        41: aload_1
+        42: invokevirtual #43                 // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+        45: invokestatic  #49                 // Method dan200/computercraft/shared/computer/core/ServerContext.get:(Lnet/minecraft/server/MinecraftServer;)Ldan200/computercraft/shared/computer/core/ServerContext;
+        48: astore        4
+        50: aload_0
+        51: new           #55                 // class dan200/computercraft/shared/computer/terminal/NetworkedTerminal
+        54: dup
+        55: aload_3
+        56: getfield      #57                 // Field dan200/computercraft/shared/computer/core/ServerComputer$Properties.terminalWidth:I
+        59: aload_3
+        60: getfield      #61                 // Field dan200/computercraft/shared/computer/core/ServerComputer$Properties.terminalHeight:I
+        63: aload_0
+        64: getfield      #42                 // Field family:Ldan200/computercraft/shared/computer/core/ComputerFamily;
+        67: getstatic     #64                 // Field dan200/computercraft/shared/computer/core/ComputerFamily.NORMAL:Ldan200/computercraft/shared/computer/core/ComputerFamily;
+        70: if_acmpeq     77
+        73: iconst_1
+        74: goto          78
+        77: iconst_0
+        78: aload_0
+        79: invokedynamic #69,  0             // InvokeDynamic #0:run:(Ldan200/computercraft/shared/computer/core/ServerComputer;)Ljava/lang/Runnable;
+        84: invokespecial #73                 // Method dan200/computercraft/shared/computer/terminal/NetworkedTerminal."<init>":(IIZLjava/lang/Runnable;)V
+        87: putfield      #76                 // Field terminal:Ldan200/computercraft/shared/computer/terminal/NetworkedTerminal;
+        90: aload_0
+        91: aload         4
+        93: invokevirtual #80                 // Method dan200/computercraft/shared/computer/core/ServerContext.metrics:()Ldan200/computercraft/shared/computer/metrics/GlobalMetrics;
+        96: aload_0
+        97: invokevirtual #84                 // Method dan200/computercraft/shared/computer/metrics/GlobalMetrics.createMetricObserver:(Ldan200/computercraft/shared/computer/core/ServerComputer;)Ldan200/computercraft/core/metrics/MetricsObserver;
+       100: putfield      #90                 // Field metrics:Ldan200/computercraft/core/metrics/MetricsObserver;
+       103: aload_0
+       104: aload_3
+       105: getfield      #93                 // Field dan200/computercraft/shared/computer/core/ServerComputer$Properties.storageCapacity:J
+       108: putfield      #97                 // Field storageCapacity:J
+       111: aload_3
+       112: getstatic     #98                 // Field METRICS:Ldan200/computercraft/api/component/ComputerComponent;
+       115: aload_0
+       116: getfield      #90                 // Field metrics:Ldan200/computercraft/core/metrics/MetricsObserver;
+       119: invokevirtual #102                // Method dan200/computercraft/shared/computer/core/ServerComputer$Properties.addComponent:(Ldan200/computercraft/api/component/ComputerComponent;Ljava/lang/Object;)Ldan200/computercraft/shared/computer/core/ServerComputer$Properties;
+       122: pop
+       123: aload_0
+       124: getfield      #42                 // Field family:Ldan200/computercraft/shared/computer/core/ComputerFamily;
+       127: getstatic     #106                // Field dan200/computercraft/shared/computer/core/ComputerFamily.COMMAND:Ldan200/computercraft/shared/computer/core/ComputerFamily;
+       130: if_acmpne     149
+       133: aload_3
+       134: getstatic     #109                // Field dan200/computercraft/api/component/ComputerComponents.ADMIN_COMPUTER:Ldan200/computercraft/api/component/ComputerComponent;
+       137: new           #114                // class dan200/computercraft/shared/computer/core/ServerComputer$1
+       140: dup
+       141: aload_0
+       142: invokespecial #116                // Method dan200/computercraft/shared/computer/core/ServerComputer$1."<init>":(Ldan200/computercraft/shared/computer/core/ServerComputer;)V
+       145: invokevirtual #102                // Method dan200/computercraft/shared/computer/core/ServerComputer$Properties.addComponent:(Ldan200/computercraft/api/component/ComputerComponent;Ljava/lang/Object;)Ldan200/computercraft/shared/computer/core/ServerComputer$Properties;
+       148: pop
+       149: aload_3
+       150: getfield      #119                // Field dan200/computercraft/shared/computer/core/ServerComputer$Properties.components:Ljava/util/Map;
+       153: invokestatic  #123                // InterfaceMethod java/util/Map.copyOf:(Ljava/util/Map;)Ljava/util/Map;
+       156: astore        5
+       158: aload_0
+       159: new           #129                // class dan200/computercraft/core/computer/Computer
+       162: dup
+       163: aload         4
+       165: invokevirtual #131                // Method dan200/computercraft/shared/computer/core/ServerContext.computerContext:()Ldan200/computercraft/core/ComputerContext;
+       168: aload_0
+       169: aload_0
+       170: getfield      #76                 // Field terminal:Ldan200/computercraft/shared/computer/terminal/NetworkedTerminal;
+       173: aload_3
+       174: getfield      #135                // Field dan200/computercraft/shared/computer/core/ServerComputer$Properties.computerID:I
+       177: invokespecial #138                // Method dan200/computercraft/core/computer/Computer."<init>":(Ldan200/computercraft/core/ComputerContext;Ldan200/computercraft/core/computer/ComputerEnvironment;Ldan200/computercraft/core/terminal/Terminal;I)V
+       180: putfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+       183: aload_0
+       184: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+       187: aload_3
+       188: getfield      #145                // Field dan200/computercraft/shared/computer/core/ServerComputer$Properties.label:Ljava/lang/String;
+       191: invokevirtual #149                // Method dan200/computercraft/core/computer/Computer.setLabel:(Ljava/lang/String;)V
+       194: invokestatic  #153                // Method dan200/computercraft/impl/ApiFactories.getAll:()Ljava/util/Collection;
+       197: invokeinterface #159,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+       202: astore        6
+       204: aload         6
+       206: invokeinterface #165,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       211: ifeq          283
+       214: aload         6
+       216: invokeinterface #171,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       221: checkcast     #175                // class dan200/computercraft/api/lua/ILuaAPIFactory
+       224: astore        7
+       226: new           #177                // class dan200/computercraft/shared/computer/core/ComputerSystem
+       229: dup
+       230: aload_0
+       231: aload_0
+       232: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+       235: invokevirtual #179                // Method dan200/computercraft/core/computer/Computer.getAPIEnvironment:()Ldan200/computercraft/core/apis/IAPIEnvironment;
+       238: aload         5
+       240: invokespecial #183                // Method dan200/computercraft/shared/computer/core/ComputerSystem."<init>":(Ldan200/computercraft/shared/computer/core/ServerComputer;Ldan200/computercraft/core/apis/IAPIEnvironment;Ljava/util/Map;)V
+       243: astore        8
+       245: aload         7
+       247: aload         8
+       249: invokeinterface #186,  2          // InterfaceMethod dan200/computercraft/api/lua/ILuaAPIFactory.create:(Ldan200/computercraft/api/lua/IComputerSystem;)Ldan200/computercraft/api/lua/ILuaAPI;
+       254: astore        9
+       256: aload         9
+       258: ifnonnull     264
+       261: goto          204
+       264: aload         8
+       266: invokevirtual #190                // Method dan200/computercraft/shared/computer/core/ComputerSystem.activate:()V
+       269: aload_0
+       270: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+       273: aload         9
+       275: aload         8
+       277: invokevirtual #193                // Method dan200/computercraft/core/computer/Computer.addApi:(Ldan200/computercraft/api/lua/ILuaAPI;Ldan200/computercraft/core/computer/ApiLifecycle;)V
+       280: goto          204
+       283: return
+
+  public final dan200.computercraft.shared.computer.core.ComputerFamily getFamily();
+    Code:
+         0: aload_0
+         1: getfield      #42                 // Field family:Ldan200/computercraft/shared/computer/core/ComputerFamily;
+         4: areturn
+
+  public final net.minecraft.server.level.ServerLevel getLevel();
+    Code:
+         0: aload_0
+         1: getfield      #28                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+         4: areturn
+
+  public final net.minecraft.core.BlockPos getPosition();
+    Code:
+         0: aload_0
+         1: getfield      #32                 // Field position:Lnet/minecraft/core/BlockPos;
+         4: areturn
+
+  public final void setPosition(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: putfield      #28                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+         5: aload_0
+         6: aload_2
+         7: invokevirtual #197                // Method net/minecraft/core/BlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+        10: putfield      #32                 // Field position:Lnet/minecraft/core/BlockPos;
+        13: return
+
+  protected final void markTerminalChanged();
+    Code:
+         0: aload_0
+         1: getfield      #24                 // Field terminalChanged:Ljava/util/concurrent/atomic/AtomicBoolean;
+         4: iconst_1
+         5: invokevirtual #203                // Method java/util/concurrent/atomic/AtomicBoolean.set:(Z)V
+         8: return
+
+  protected void tickServer();
+    Code:
+         0: aload_0
+         1: dup
+         2: getfield      #206                // Field ticksSincePing:I
+         5: iconst_1
+         6: iadd
+         7: putfield      #206                // Field ticksSincePing:I
+        10: aload_0
+        11: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+        14: invokevirtual #209                // Method dan200/computercraft/core/computer/Computer.tick:()V
+        17: aload_0
+        18: getfield      #24                 // Field terminalChanged:Ljava/util/concurrent/atomic/AtomicBoolean;
+        21: iconst_0
+        22: invokevirtual #212                // Method java/util/concurrent/atomic/AtomicBoolean.getAndSet:(Z)Z
+        25: ifeq          32
+        28: aload_0
+        29: invokevirtual #216                // Method onTerminalChanged:()V
+        32: return
+
+  protected void onTerminalChanged();
+    Code:
+         0: aload_0
+         1: aload_0
+         2: invokedynamic #219,  0            // InvokeDynamic #1:apply:(Ldan200/computercraft/shared/computer/core/ServerComputer;)Ljava/util/function/Function;
+         7: invokevirtual #223                // Method sendToAllInteracting:(Ljava/util/function/Function;)V
+        10: return
+
+  public final dan200.computercraft.shared.computer.terminal.TerminalState getTerminalState();
+    Code:
+         0: aload_0
+         1: getfield      #76                 // Field terminal:Ldan200/computercraft/shared/computer/terminal/NetworkedTerminal;
+         4: invokestatic  #227                // Method dan200/computercraft/shared/computer/terminal/TerminalState.create:(Ldan200/computercraft/shared/computer/terminal/NetworkedTerminal;)Ldan200/computercraft/shared/computer/terminal/TerminalState;
+         7: areturn
+
+  public final void keepAlive();
+    Code:
+         0: aload_0
+         1: iconst_0
+         2: putfield      #206                // Field ticksSincePing:I
+         5: return
+
+  boolean hasTimedOut();
+    Code:
+         0: aload_0
+         1: getfield      #206                // Field ticksSincePing:I
+         4: bipush        100
+         6: if_icmple     13
+         9: iconst_1
+        10: goto          14
+        13: iconst_0
+        14: ireturn
+
+  public final int pollRedstoneChanges();
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #232                // Method dan200/computercraft/core/computer/Computer.pollRedstoneChanges:()I
+         7: ireturn
+
+  public java.util.UUID register();
+    Code:
+         0: aload_0
+         1: getfield      #28                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+         4: invokevirtual #43                 // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+         7: invokestatic  #49                 // Method dan200/computercraft/shared/computer/core/ServerContext.get:(Lnet/minecraft/server/MinecraftServer;)Ldan200/computercraft/shared/computer/core/ServerContext;
+        10: invokevirtual #236                // Method dan200/computercraft/shared/computer/core/ServerContext.registry:()Ldan200/computercraft/shared/computer/core/ServerComputerRegistry;
+        13: aload_0
+        14: invokevirtual #240                // Method dan200/computercraft/shared/computer/core/ServerComputerRegistry.add:(Ldan200/computercraft/shared/computer/core/ServerComputer;)V
+        17: aload_0
+        18: getfield      #13                 // Field instanceUUID:Ljava/util/UUID;
+        21: areturn
+
+  void unload();
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #245                // Method dan200/computercraft/core/computer/Computer.unload:()V
+         7: return
+
+  public final void close();
+    Code:
+         0: aload_0
+         1: invokevirtual #248                // Method unload:()V
+         4: aload_0
+         5: getfield      #28                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+         8: invokevirtual #43                 // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+        11: invokestatic  #49                 // Method dan200/computercraft/shared/computer/core/ServerContext.get:(Lnet/minecraft/server/MinecraftServer;)Ldan200/computercraft/shared/computer/core/ServerContext;
+        14: invokevirtual #236                // Method dan200/computercraft/shared/computer/core/ServerContext.registry:()Ldan200/computercraft/shared/computer/core/ServerComputerRegistry;
+        17: aload_0
+        18: invokevirtual #249                // Method dan200/computercraft/shared/computer/core/ServerComputerRegistry.remove:(Ldan200/computercraft/shared/computer/core/ServerComputer;)V
+        21: return
+
+  public final boolean checkUsable(net.minecraft.world.entity.player.Player);
+    Code:
+         0: aload_0
+         1: getfield      #28                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+         4: invokevirtual #43                 // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+         7: invokestatic  #49                 // Method dan200/computercraft/shared/computer/core/ServerContext.get:(Lnet/minecraft/server/MinecraftServer;)Ldan200/computercraft/shared/computer/core/ServerContext;
+        10: invokevirtual #236                // Method dan200/computercraft/shared/computer/core/ServerContext.registry:()Ldan200/computercraft/shared/computer/core/ServerComputerRegistry;
+        13: aload_0
+        14: getfield      #13                 // Field instanceUUID:Ljava/util/UUID;
+        17: invokevirtual #252                // Method dan200/computercraft/shared/computer/core/ServerComputerRegistry.get:(Ljava/util/UUID;)Ldan200/computercraft/shared/computer/core/ServerComputer;
+        20: aload_0
+        21: if_acmpne     39
+        24: aload_0
+        25: invokevirtual #255                // Method getFamily:()Ldan200/computercraft/shared/computer/core/ComputerFamily;
+        28: aload_1
+        29: invokevirtual #259                // Method dan200/computercraft/shared/computer/core/ComputerFamily.checkUsable:(Lnet/minecraft/world/entity/player/Player;)Z
+        32: ifeq          39
+        35: iconst_1
+        36: goto          40
+        39: iconst_0
+        40: ireturn
+
+  private void sendToAllInteracting(java.util.function.Function<net.minecraft.world.inventory.AbstractContainerMenu, dan200.computercraft.shared.network.NetworkMessage<dan200.computercraft.shared.network.client.ClientNetworkContext>>);
+    Code:
+         0: aload_0
+         1: getfield      #28                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+         4: invokevirtual #43                 // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+         7: astore_2
+         8: aload_2
+         9: invokevirtual #263                // Method net/minecraft/server/MinecraftServer.getPlayerList:()Lnet/minecraft/server/players/PlayerList;
+        12: invokevirtual #269                // Method net/minecraft/server/players/PlayerList.getPlayers:()Ljava/util/List;
+        15: invokeinterface #275,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        20: astore_3
+        21: aload_3
+        22: invokeinterface #165,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        27: ifeq          96
+        30: aload_3
+        31: invokeinterface #171,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        36: checkcast     #278                // class net/minecraft/server/level/ServerPlayer
+        39: astore        4
+        41: aload         4
+        43: getfield      #280                // Field net/minecraft/server/level/ServerPlayer.containerMenu:Lnet/minecraft/world/inventory/AbstractContainerMenu;
+        46: astore        6
+        48: aload         6
+        50: instanceof    #284                // class dan200/computercraft/shared/computer/menu/ComputerMenu
+        53: ifeq          93
+        56: aload         6
+        58: checkcast     #284                // class dan200/computercraft/shared/computer/menu/ComputerMenu
+        61: astore        5
+        63: aload         5
+        65: invokeinterface #286,  1          // InterfaceMethod dan200/computercraft/shared/computer/menu/ComputerMenu.getComputer:()Ldan200/computercraft/shared/computer/core/ServerComputer;
+        70: aload_0
+        71: if_acmpne     93
+        74: aload_1
+        75: aload         4
+        77: getfield      #280                // Field net/minecraft/server/level/ServerPlayer.containerMenu:Lnet/minecraft/world/inventory/AbstractContainerMenu;
+        80: invokeinterface #290,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+        85: checkcast     #295                // class dan200/computercraft/shared/network/NetworkMessage
+        88: aload         4
+        90: invokestatic  #297                // Method dan200/computercraft/shared/network/server/ServerNetworking.sendToPlayer:(Ldan200/computercraft/shared/network/NetworkMessage;Lnet/minecraft/server/level/ServerPlayer;)V
+        93: goto          21
+        96: return
+
+  protected void onRemoved();
+    Code:
+         0: return
+
+  public final java.util.UUID getInstanceUUID();
+    Code:
+         0: aload_0
+         1: getfield      #13                 // Field instanceUUID:Ljava/util/UUID;
+         4: areturn
+
+  public final int getID();
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #303                // Method dan200/computercraft/core/computer/Computer.getID:()I
+         7: ireturn
+
+  public final java.lang.String getLabel();
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #306                // Method dan200/computercraft/core/computer/Computer.getLabel:()Ljava/lang/String;
+         7: areturn
+
+  public final boolean isOn();
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #310                // Method dan200/computercraft/core/computer/Computer.isOn:()Z
+         7: ireturn
+
+  public final dan200.computercraft.shared.computer.core.ComputerState getState();
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #310                // Method dan200/computercraft/core/computer/Computer.isOn:()Z
+         7: ifne          14
+        10: getstatic     #313                // Field dan200/computercraft/shared/computer/core/ComputerState.OFF:Ldan200/computercraft/shared/computer/core/ComputerState;
+        13: areturn
+        14: aload_0
+        15: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+        18: invokevirtual #319                // Method dan200/computercraft/core/computer/Computer.isBlinking:()Z
+        21: ifeq          30
+        24: getstatic     #322                // Field dan200/computercraft/shared/computer/core/ComputerState.BLINKING:Ldan200/computercraft/shared/computer/core/ComputerState;
+        27: goto          33
+        30: getstatic     #325                // Field dan200/computercraft/shared/computer/core/ComputerState.ON:Ldan200/computercraft/shared/computer/core/ComputerState;
+        33: areturn
+
+  public final void turnOn();
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #328                // Method dan200/computercraft/core/computer/Computer.turnOn:()V
+         7: return
+
+  public final void shutdown();
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #331                // Method dan200/computercraft/core/computer/Computer.shutdown:()V
+         7: return
+
+  public final void reboot();
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #334                // Method dan200/computercraft/core/computer/Computer.reboot:()V
+         7: return
+
+  public final void queueEvent(java.lang.String, java.lang.Object[]);
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: aload_1
+         5: aload_2
+         6: invokevirtual #337                // Method dan200/computercraft/core/computer/Computer.queueEvent:(Ljava/lang/String;[Ljava/lang/Object;)V
+         9: return
+
+  public final void queueEvent(java.lang.String);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: aconst_null
+         3: invokevirtual #341                // Method queueEvent:(Ljava/lang/String;[Ljava/lang/Object;)V
+         6: return
+
+  public final dan200.computercraft.core.input.UserComputerInput createComputerInput();
+    Code:
+         0: new           #342                // class dan200/computercraft/core/input/UserComputerInput
+         3: dup
+         4: new           #344                // class dan200/computercraft/core/input/EventComputerInput
+         7: dup
+         8: aload_0
+         9: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+        12: invokespecial #346                // Method dan200/computercraft/core/input/EventComputerInput."<init>":(Ldan200/computercraft/core/computer/Computer;)V
+        15: aload_0
+        16: getfield      #76                 // Field terminal:Ldan200/computercraft/shared/computer/terminal/NetworkedTerminal;
+        19: invokespecial #349                // Method dan200/computercraft/core/input/UserComputerInput."<init>":(Ldan200/computercraft/core/input/ComputerInput;Ldan200/computercraft/core/terminal/Terminal;)V
+        22: areturn
+
+  public final int getRedstoneOutput(dan200.computercraft.core.computer.ComputerSide);
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #310                // Method dan200/computercraft/core/computer/Computer.isOn:()Z
+         7: ifeq          24
+        10: aload_0
+        11: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+        14: invokevirtual #352                // Method dan200/computercraft/core/computer/Computer.getRedstone:()Ldan200/computercraft/core/redstone/RedstoneState;
+        17: aload_1
+        18: invokevirtual #356                // Method dan200/computercraft/core/redstone/RedstoneState.getExternalOutput:(Ldan200/computercraft/core/computer/ComputerSide;)I
+        21: goto          25
+        24: iconst_0
+        25: ireturn
+
+  public final void setRedstoneInput(dan200.computercraft.core.computer.ComputerSide, int, int);
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #352                // Method dan200/computercraft/core/computer/Computer.getRedstone:()Ldan200/computercraft/core/redstone/RedstoneState;
+         7: aload_1
+         8: iload_2
+         9: iload_3
+        10: invokevirtual #362                // Method dan200/computercraft/core/redstone/RedstoneState.setInput:(Ldan200/computercraft/core/computer/ComputerSide;II)Z
+        13: pop
+        14: return
+
+  public final int getBundledRedstoneOutput(dan200.computercraft.core.computer.ComputerSide);
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #310                // Method dan200/computercraft/core/computer/Computer.isOn:()Z
+         7: ifeq          24
+        10: aload_0
+        11: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+        14: invokevirtual #352                // Method dan200/computercraft/core/computer/Computer.getRedstone:()Ldan200/computercraft/core/redstone/RedstoneState;
+        17: aload_1
+        18: invokevirtual #366                // Method dan200/computercraft/core/redstone/RedstoneState.getExternalBundledOutput:(Ldan200/computercraft/core/computer/ComputerSide;)I
+        21: goto          25
+        24: iconst_0
+        25: ireturn
+
+  public final void setPeripheral(dan200.computercraft.core.computer.ComputerSide, dan200.computercraft.api.peripheral.IPeripheral);
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #369                // Method dan200/computercraft/core/computer/Computer.getEnvironment:()Ldan200/computercraft/core/computer/Environment;
+         7: aload_1
+         8: aload_2
+         9: invokevirtual #373                // Method dan200/computercraft/core/computer/Environment.setPeripheral:(Ldan200/computercraft/core/computer/ComputerSide;Ldan200/computercraft/api/peripheral/IPeripheral;)V
+        12: return
+
+  public final dan200.computercraft.api.peripheral.IPeripheral getPeripheral(dan200.computercraft.core.computer.ComputerSide);
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #369                // Method dan200/computercraft/core/computer/Computer.getEnvironment:()Ldan200/computercraft/core/computer/Environment;
+         7: aload_1
+         8: invokevirtual #379                // Method dan200/computercraft/core/computer/Environment.getPeripheral:(Ldan200/computercraft/core/computer/ComputerSide;)Ldan200/computercraft/api/peripheral/IPeripheral;
+        11: areturn
+
+  public final void setLabel(java.lang.String);
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: aload_1
+         5: invokevirtual #149                // Method dan200/computercraft/core/computer/Computer.setLabel:(Ljava/lang/String;)V
+         8: return
+
+  public final double getTimeOfDay();
+    Code:
+         0: aload_0
+         1: getfield      #28                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+         4: invokevirtual #383                // Method net/minecraft/server/level/ServerLevel.getDayTime:()J
+         7: ldc2_w        #387                // long 6000l
+        10: ladd
+        11: ldc2_w        #389                // long 24000l
+        14: lrem
+        15: l2d
+        16: ldc2_w        #391                // double 1000.0d
+        19: ddiv
+        20: dreturn
+
+  public final int getDay();
+    Code:
+         0: aload_0
+         1: getfield      #28                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+         4: invokevirtual #383                // Method net/minecraft/server/level/ServerLevel.getDayTime:()J
+         7: ldc2_w        #387                // long 6000l
+        10: ladd
+        11: ldc2_w        #389                // long 24000l
+        14: ldiv
+        15: l2i
+        16: iconst_1
+        17: iadd
+        18: ireturn
+
+  public final dan200.computercraft.core.metrics.MetricsObserver getMetrics();
+    Code:
+         0: aload_0
+         1: getfield      #90                 // Field metrics:Ldan200/computercraft/core/metrics/MetricsObserver;
+         4: areturn
+
+  public final dan200.computercraft.api.peripheral.WorkMonitor getMainThreadMonitor();
+    Code:
+         0: aload_0
+         1: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+         4: invokevirtual #393                // Method dan200/computercraft/core/computer/Computer.getMainThreadMonitor:()Ldan200/computercraft/api/peripheral/WorkMonitor;
+         7: areturn
+
+  public final dan200.computercraft.api.filesystem.WritableMount createRootMount();
+    Code:
+         0: aload_0
+         1: getfield      #97                 // Field storageCapacity:J
+         4: lconst_0
+         5: lcmp
+         6: ifgt          25
+         9: getstatic     #397                // Field dan200/computercraft/shared/config/ConfigSpec.computerSpaceLimit:Ldan200/computercraft/shared/config/ConfigFile$Value;
+        12: invokevirtual #403                // Method dan200/computercraft/shared/config/ConfigFile$Value.get:()Ljava/lang/Object;
+        15: checkcast     #407                // class java/lang/Integer
+        18: invokevirtual #409                // Method java/lang/Integer.intValue:()I
+        21: i2l
+        22: goto          29
+        25: aload_0
+        26: getfield      #97                 // Field storageCapacity:J
+        29: lstore_1
+        30: aload_0
+        31: getfield      #28                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+        34: invokevirtual #43                 // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+        37: aload_0
+        38: getfield      #141                // Field computer:Ldan200/computercraft/core/computer/Computer;
+        41: invokevirtual #303                // Method dan200/computercraft/core/computer/Computer.getID:()I
+        44: invokedynamic #412,  0            // InvokeDynamic #2:makeConcatWithConstants:(I)Ljava/lang/String;
+        49: lload_1
+        50: invokestatic  #416                // Method dan200/computercraft/api/ComputerCraftAPI.createSaveDirMount:(Lnet/minecraft/server/MinecraftServer;Ljava/lang/String;J)Ldan200/computercraft/api/filesystem/WritableMount;
+        53: areturn
+
+  public static dan200.computercraft.shared.computer.core.ServerComputer$Properties properties(int, dan200.computercraft.shared.computer.core.ComputerFamily);
+    Code:
+         0: new           #37                 // class dan200/computercraft/shared/computer/core/ServerComputer$Properties
+         3: dup
+         4: iload_0
+         5: aload_1
+         6: invokespecial #422                // Method dan200/computercraft/shared/computer/core/ServerComputer$Properties."<init>":(ILdan200/computercraft/shared/computer/core/ComputerFamily;)V
+         9: areturn
+
+  private dan200.computercraft.shared.network.NetworkMessage lambda$onTerminalChanged$0(net.minecraft.world.inventory.AbstractContainerMenu);
+    Code:
+         0: new           #425                // class dan200/computercraft/shared/network/client/ComputerTerminalClientMessage
+         3: dup
+         4: aload_1
+         5: aload_0
+         6: invokevirtual #427                // Method getTerminalState:()Ldan200/computercraft/shared/computer/terminal/TerminalState;
+         9: invokespecial #431                // Method dan200/computercraft/shared/network/client/ComputerTerminalClientMessage."<init>":(Lnet/minecraft/world/inventory/AbstractContainerMenu;Ldan200/computercraft/shared/computer/terminal/TerminalState;)V
+        12: areturn
+
+  static {};
+    Code:
+         0: ldc_w         #434                // String computercraft
+         3: ldc_w         #436                // String metrics
+         6: invokestatic  #437                // Method dan200/computercraft/api/component/ComputerComponent.create:(Ljava/lang/String;Ljava/lang/String;)Ldan200/computercraft/api/component/ComputerComponent;
+         9: putstatic     #98                 // Field METRICS:Ldan200/computercraft/api/component/ComputerComponent;
+        12: return
+}

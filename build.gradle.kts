@@ -4,7 +4,7 @@ plugins {
 }
 
 version = property("mod_version")!!
-group = "ua.ivan.sableccticksync"
+group = "dev.sableccticksync"
 
 base {
     archivesName.set("sable-cc-tick-sync")
@@ -57,3 +57,16 @@ tasks.processResources {
         )
     }
 }
+
+sourceSets.test {
+    compileClasspath += sourceSets.main.get().compileClasspath
+    runtimeClasspath += sourceSets.main.get().compileClasspath
+}
+
+val regressionTest by tasks.registering(JavaExec::class) {
+    dependsOn(tasks.testClasses)
+    classpath = sourceSets.test.get().runtimeClasspath
+    mainClass.set("dev.sableccticksync.PhysicsDispatchRegression")
+}
+
+tasks.check { dependsOn(regressionTest) }

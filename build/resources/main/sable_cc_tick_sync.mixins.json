@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.sableccticksync.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ComputerMixin",
+    "EnvironmentAccessor",
+    "InventoryMethodsMixin",
+    "ItemDetailsMixin",
+    "LuaContextMixin",
+    "PeripheralWrapperMixin",
+    "ServerComputerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
